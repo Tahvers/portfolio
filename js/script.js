@@ -65,3 +65,49 @@ let myDate = document.querySelector("#datee");
 
 const yes = new Date().getFullYear();
 myDate.innerHTML = yes;
+
+// Projects
+
+const stage = document.querySelector(".stack-stage");
+const cards = Array.from(document.querySelectorAll(".stack-card"));
+const prevBtn = document.querySelector(".stack-prev");
+const nextBtn = document.querySelector(".stack-next");
+
+let current = 0;
+
+function mod(n, m) {
+  return ((n % m) + m) % m;
+}
+
+function renderStack() {
+  const prev = mod(current - 1, cards.length);
+  const next = mod(current + 1, cards.length);
+
+  cards.forEach((card, i) => {
+    card.classList.remove("is-active", "is-prev", "is-next");
+    card.style.pointerEvents = "none";
+  });
+
+  cards[prev].classList.add("is-prev");
+  cards[next].classList.add("is-next");
+  cards[current].classList.add("is-active");
+  cards[current].style.pointerEvents = "auto";
+}
+
+nextBtn.addEventListener("click", () => {
+  current = mod(current + 1, cards.length);
+  renderStack();
+});
+
+prevBtn.addEventListener("click", () => {
+  current = mod(current - 1, cards.length);
+  renderStack();
+});
+
+// Opcional: teclado
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowRight") nextBtn.click();
+  if (e.key === "ArrowLeft") prevBtn.click();
+});
+
+renderStack();
