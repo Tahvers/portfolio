@@ -264,6 +264,11 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .tech-item img {
@@ -645,6 +650,28 @@ body {
   z-index: 1;
   transform: translateX(-90px) translateY(16px) scale(0.965);
   filter: saturate(0.95);
+}
+
+/* Modo single project */
+
+.stack-stage.single {
+  height: auto;
+}
+
+.stack-stage.single .stack-card {
+  position: relative;
+  opacity: 1;
+  transform: none;
+  z-index: 1;
+}
+
+.stack-stage.single .stack-card:not(:first-child) {
+  display: none;
+}
+
+.stack-stage.single + .stack-btn,
+.stack-carousel.single .stack-btn {
+  display: none;
 }
 
 /* Responsive */

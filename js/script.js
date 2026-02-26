@@ -80,6 +80,13 @@ function mod(n, m) {
 }
 
 function renderStack() {
+
+  if (cards.length <= 1) {
+    stage.classList.add("single");
+    document.querySelector(".stack-carousel").classList.add("single");
+    return;
+  }
+
   const prev = mod(current - 1, cards.length);
   const next = mod(current + 1, cards.length);
 
@@ -94,20 +101,16 @@ function renderStack() {
   cards[current].style.pointerEvents = "auto";
 }
 
-nextBtn.addEventListener("click", () => {
-  current = mod(current + 1, cards.length);
-  renderStack();
-});
+if (cards.length > 1) {
+  nextBtn.addEventListener("click", () => {
+    current = mod(current + 1, cards.length);
+    renderStack();
+  });
 
-prevBtn.addEventListener("click", () => {
-  current = mod(current - 1, cards.length);
-  renderStack();
-});
-
-// Opcional: teclado
-document.addEventListener("keydown", (e) => {
-  if (e.key === "ArrowRight") nextBtn.click();
-  if (e.key === "ArrowLeft") prevBtn.click();
-});
+  prevBtn.addEventListener("click", () => {
+    current = mod(current - 1, cards.length);
+    renderStack();
+  });
+}
 
 renderStack();
