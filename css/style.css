@@ -542,6 +542,19 @@ body {
   transform: scale(1.12);
 }
 
+.btn.disabled {
+  background-color: #ccc;
+  color: #777;
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+[data-theme="dark"] .btn.disabled {
+  background-color: #333;
+  color: #777;
+}
+
 .stack-viewport {
   width: 100%;
   max-width: 980px;
@@ -590,6 +603,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  text-align: center
 }
 
 .stack-body h3 {
@@ -610,10 +624,12 @@ body {
 
 .stack-desc {
   margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #444;
+  font-size: 0.85rem;        /* antes 0.95 */
+  line-height: 1.75;        /* más aire */
+  color: #555;              /* ligeramente más suave */
   flex: 1;
+  text-align: left;
+  max-width: 92%;           /* evita bloque ancho */
 }
 
 [data-theme="dark"] .stack-desc {
